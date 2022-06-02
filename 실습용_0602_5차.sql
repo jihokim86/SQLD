@@ -64,7 +64,7 @@ ORDER BY a.salary DESC;
 
 
 SELECT
-   department_id
+   a.employee_id, a.department_id
 FROM employees a
 where a.salary IN ( SELECT MIN(salary) 최저급여
                     FROM employees
@@ -72,4 +72,51 @@ where a.salary IN ( SELECT MIN(salary) 최저급여
                   )
 ORDER BY a.salary DESC;
 
-      
+
+SELECT    *
+FROM employees a
+WHERE (a.job_id, a.salary) IN (SELECT job_id, MIN(salary) 그룹별급여
+                                from employees
+                                group by job_id
+                                )
+ORDER by a.salary DESC;                                
+
+
+SELECT    *
+FROM employees a,(SELECT department_id
+                  FROM departments
+                  WHERE department_name='IT') b
+WHERE a.department_id = b.department_id;                  
+
+
+--SQL를 재부팅하면 행입력된게 사라지므로 commit을 해야한다.
+INSERT INTO departments (department_id,department_name,manager_id,location_id)
+VALUES (271,'Sample_Dept',200,1700);
+--아래와 같이 해도 됨! 속성만 맞으면!
+--INSERT INTO departments
+--VALUES (271,'Sample_Dept',200,1700);
+
+
+INSERT INTO departments
+VALUES (272,null,200,1700);
+
+
+SELECT
+    *
+FROM departments
+ORDER BY department_id desc;
+
+
+commit; -- 저장 완료..
+
+DELETE FROM
+
+
+UPDATE departments 
+set manager_id=201,
+    location_id = 1800
+where department_name = 'Sample_Dept';
+
+
+
+
