@@ -25,6 +25,7 @@ FROM player;
 SELECT
 player_name||'선수,'||height||'cm,'||weight||'kg'
 FROM player;
+-- "선수" 는 왜 안될까?
 
 
 
