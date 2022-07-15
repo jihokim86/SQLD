@@ -31,6 +31,18 @@ SELECT
 FROM emp
 where hiredate > to_date('1981/06/01','YYYY/MM/DD');
 
+-- 최근입사일 사원 출력
+SELECT
+    max(to_char(hiredate,'yy/mm/dd'))
+FROM emp
+where deptno =20;
+
+
+SELECT
+    max(hiredate)
+FROM emp
+where deptno =20;
+
 -- null은 계산을 하면 결과는 null이 된다
 -- 그래서 null를 계산할때는 NVL과 NVL2를 사용하면됨.
 --NVL
